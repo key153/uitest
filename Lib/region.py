@@ -19,7 +19,7 @@ def add_region(driver,name):
 	time.sleep(1)
 
 def edit_region(driver,name,name1):
-# 编辑区域
+	# 编辑区域
 	driver.find_element_by_xpath("//td[text()='%s']"%name).click()
 	time.sleep(1)
 	driver.find_element_by_xpath("//i[@class='fa fa-edit bigger-110 green']").click()
@@ -37,7 +37,7 @@ def edit_region(driver,name,name1):
 	time.sleep(1)
 
 def delete_region(driver,name1):
-# 删除区域
+	# 删除区域
 	driver.find_element_by_xpath("//td[text()='%s']"%name1).click()
 	time.sleep(1)
 	driver.find_element_by_xpath("//i[@class='fa fa-trash bigger-110 red']").click()
@@ -46,6 +46,6 @@ def delete_region(driver,name1):
 	time.sleep(1)
 
 def refresh_region(driver,name):
-# 刷新
+	# 刷新
 	driver.find_element_by_xpath("//i[@class='fa fa-refresh bigger-110 blue']").click()
 	time.sleep(1)

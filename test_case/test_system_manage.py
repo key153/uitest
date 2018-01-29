@@ -11,7 +11,7 @@ import logging
 
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0,parentdir)
-from Lib import login, confirm, data, face_data_manage, region, exception
+from Lib import login, confirm, data, face_data_manage, region
 
 
 class Webtest(unittest.TestCase):
