@@ -30,39 +30,6 @@ class Webtest(unittest.TestCase):
 		self.accept_next_alert = True
 
 
-	def test_facelab(self):
-		# 新增人脸库
-		driver = self.driver
-		logging.info('Start test: test_001')
-		try:
-			# 新增一个人脸库
-			face_data_manage.add_face_lib(driver, 'testtest')
-			# 检测新增人脸库
-			logging.info(confirm.is_element_text_exist(driver, 'td', "testtest"))
-			self.assertTrue(confirm.is_element_text_exist(driver, 'td', "testtest"))
-			logging.info("Finish adding face lib")
-			time.sleep(2)
-			# 编辑人脸库
-			face_data_manage.edit_face_lib(driver, 'testtest', '11')
-			# 检测编辑人脸库
-			self.assertTrue(confirm.is_element_text_exist(driver, 'td', "testtest11"))
-			logging.info("Finish editing face lib")
-			time.sleep(2)
-			# 删除人脸库
-			face_data_manage.delete_face_lib(driver, 'testtest11')
-			self.assertFalse(confirm.is_element_text_exist(driver, 'td', "testtest11"))
-			logging.info("Finish deleting face lib")
-			time.sleep(2)
-			logging.info('Test 001 successfully')
-
-		except Exception, e:
-			# nowTime = time.strftime('test_001' + "%Y%m%d.%H.%M.%S")
-			# driver.get_screenshot_as_file("error_image\\%s.png" % nowTime)
-			logging.info('Test 001 fail')
-			logging.error(e)
-			exception.get_excetion(driver)
-
-
 	def test_region(self):
 		#新增区域
 		driver = self.driver
