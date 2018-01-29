@@ -24,7 +24,8 @@ class Webtest(unittest.TestCase):
         # 打开chrome
         cls.driver = webdriver.Chrome(chrome_options=options)
         cls.driver.implicitly_wait(30)
-        cls.driver.maximize_window() #将浏览器最大化显示
+        # 将浏览器最大化显示
+        cls.driver.maximize_window()
         login.login_web(cls.driver)
         cls.base_url = data.LOGIN['login_address']
         cls.verificationErrors = []
