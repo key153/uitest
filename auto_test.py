@@ -9,9 +9,9 @@ import all_case_list
 alltestnames = all_case_list.caselist()
 suite = unittest.TestSuite()
 if __name__ == '__main__':
-	for test in alltestnames:
-		print "test:%s"%test
-		suite.addTest(unittest.defaultTestLoader.loadTestsFromName(test))
+    for test in alltestnames:
+        print "test:%s"%test
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromName(test))
 
 
 filename = 'result.html'
