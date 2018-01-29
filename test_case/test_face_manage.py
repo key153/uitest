@@ -16,18 +16,19 @@ from Lib import login, confirm, data, face_data_manage, region
 
 class Webtest(unittest.TestCase):
 
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         logging.basicConfig(filename='log\example.log', filemode="w", level=logging.INFO)
         options = webdriver.ChromeOptions()
         options.add_argument('disable-infobars')
         # 打开chrome
-        self.driver = webdriver.Chrome(chrome_options=options)
-        self.driver.implicitly_wait(30)
-        self.driver.maximize_window()  # 将浏览器最大化显示
-        login.login_web(self.driver)
-        self.base_url = data.LOGIN['login_address']
-        self.verificationErrors = []
-        self.accept_next_alert = True
+        cls.driver = webdriver.Chrome(chrome_options=options)
+        cls.driver.implicitly_wait(30)
+        cls.driver.maximize_window()  # 将浏览器最大化显示
+        login.login_web(cls.driver)
+        cls.base_url = data.LOGIN['login_address']
+        cls.verificationErrors = []
+        cls.accept_next_alert = True
 
     def test_facelab(self):
         # 新增人脸库
@@ -61,9 +62,10 @@ class Webtest(unittest.TestCase):
             logging.error(e)
 
 
-    def tearDown(self):
-        self.driver.quit()
-        self.assertEqual([], self.verificationErrors)
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+        cls.assertEqual([], cls.verificationErrors)
 
 
 if __name__ == "__main__":
