@@ -7,9 +7,9 @@ import all_case_list
 
 # caselist=os.listdir(sys.path[0]+'\\test_case')
 # for a in caselist:
-	# s=a.split('.')[1:][0] #Ñ¡È¡ËùÒªÖ´ÐÐµÄÓÃÀý
+	# s=a.split('.')[1:][0] #é€‰å–æ‰€è¦æ‰§è¡Œçš„ç”¨ä¾‹
 	# if s=='py':
-		#´Ë´¦Ö´ÐÐ dos ÃüÁî²¢½«½á¹û±£´æµ½ log.txt
+		#æ­¤å¤„æ‰§è¡Œ dos å‘½ä»¤å¹¶å°†ç»“æžœä¿å­˜åˆ° log.txt
 		# os.system('python '+sys.path[0]+'\\test_case\\'+a+' 1>> log.txt 2>&1')
 
 alltestnames = all_case_list.caselist()
