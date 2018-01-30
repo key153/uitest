@@ -24,8 +24,5 @@ def login_web(driver):
     except:
         nowTime = time.strftime('login'+"%Y%m%d.%H.%M.%S")
         driver.get_screenshot_as_file("error_image\\%s.png" % nowTime)
-        # logging.basicConfig(filename='example.log', filemode="w", level=logging.DEBUG)
-        # logging.debug('This message should go to the log file')
         logging.info('Login fail')
-        # logging.warning('And this, too')
         assert expression

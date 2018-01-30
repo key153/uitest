@@ -11,7 +11,7 @@ import logging
 
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, parentdir)
-from Lib import login, confirm, data, face_data_manage, region
+from Lib import login, confirm, data, face_data_manage, region, exceptions
 
 
 class Webtest(unittest.TestCase):
@@ -24,7 +24,8 @@ class Webtest(unittest.TestCase):
         # 打开chrome
         cls.driver = webdriver.Chrome(chrome_options=options)
         cls.driver.implicitly_wait(30)
-        cls.driver.maximize_window()  # 将浏览器最大化显示
+        # 将浏览器最大化显示
+        cls.driver.maximize_window()
         login.login_web(cls.driver)
         cls.base_url = data.LOGIN['login_address']
         cls.verificationErrors = []
@@ -56,10 +57,7 @@ class Webtest(unittest.TestCase):
             logging.info('Test 001 successfully')
 
         except Exception, e:
-            nowTime = time.strftime('test_001' + "%Y%m%d.%H.%M.%S")
-            driver.get_screenshot_as_file("error_image\\%s.png" % nowTime)
-            logging.info('Test 001 fail')
-            logging.error(e)
+            xceptions.deal_case_error(driver, 'facelab', e)
 
 
     @classmethod
