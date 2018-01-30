@@ -31,6 +31,7 @@ class Webtest(unittest.TestCase):
         cls.verificationErrors = []
         cls.accept_next_alert = True
 
+
     def test_facelab(self):
         # 新增人脸库
         driver = self.driver

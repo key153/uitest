@@ -65,5 +65,6 @@ class Webtest(unittest.TestCase):
         cls.driver.quit()
         cls.assertEqual([], cls.verificationErrors)
 
+
 if __name__ == "__main__":
     unittest.main()
