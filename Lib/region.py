@@ -3,6 +3,7 @@ from selenium import webdriver
 import unittest
 import time
 
+
 def add_region(driver,name):
     # 新增区域
     driver.find_element_by_xpath("//a[text()='系统管理']").click()
@@ -17,6 +18,7 @@ def add_region(driver,name):
     time.sleep(1)
     driver.find_element_by_xpath("//button[@class='btn btn-default']").click()
     time.sleep(1)
+
 
 def edit_region(driver,name,name1):
     # 编辑区域
@@ -36,6 +38,7 @@ def edit_region(driver,name,name1):
     driver.find_element_by_xpath("//button[@class='btn btn-default']").click()
     time.sleep(1)
 
+
 def delete_region(driver,name1):
     # 删除区域
     driver.find_element_by_xpath("//td[text()='%s']"%name1).click()
@@ -44,6 +47,7 @@ def delete_region(driver,name1):
     time.sleep(1)
     driver.find_element_by_xpath("//button[@class='btn btn-default']").click()
     time.sleep(1)
+
 
 def refresh_region(driver,name):
     # 刷新
