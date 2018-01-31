@@ -12,7 +12,7 @@ import logging
 
 parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0,parentdir)
-from Lib import login, confirm, data, face_data_manage, region, exceptions
+from Lib import login, confirm, face_data_manage, region, exceptions, config_parser
 
 
 class Webtest(unittest.TestCase):
@@ -28,7 +28,7 @@ class Webtest(unittest.TestCase):
         # 将浏览器最大化显示
         cls.driver.maximize_window()
         login.login_web(cls.driver)
-        cls.base_url = data.LOGIN['login_address']
+        cls.base_url = config_parser.get_config_data('web', 'login_web')
         cls.verificationErrors = []
         cls.accept_next_alert = True
 
@@ -36,7 +36,7 @@ class Webtest(unittest.TestCase):
     def test_region(self):
         #新增区域
         driver = self.driver
-        logging.info('Start test: test_002')
+        logging.info('Start test: region')
         try:
             #新增区域
             region.add_region(driver,u'江宁')
