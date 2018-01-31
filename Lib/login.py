@@ -12,7 +12,6 @@ def login_web(driver):
         time.sleep(2)
         # 登录界面
         driver.get(config_parser.get_config_data('web', 'login_web'))
-        # driver.get(data.LOGIN['login_address'])
         time.sleep(2)
         # 输入用户名和密码
         driver.find_element_by_id("username").send_keys(config_parser.get_config_data('web', 'user'))

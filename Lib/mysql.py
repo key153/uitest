@@ -1,19 +1,23 @@
 # -*- coding: utf-8 -*-
 import MySQLdb
+import config_parser
 
 
 def connet_mysql():
     # 打开数据库连接
-    db = MySQLdb.connect("172.16.1.56", "root", "root", "camera")
+    db = MySQLdb.connect(host=config_parser.get_config_data('mysql', 'ip'), port=int(config_parser.get_config_data('mysql', 'port')),
+                         user=config_parser.get_config_data('mysql', 'user'),passwd=config_parser.get_config_data('mysql', 'password'),
+                         db=config_parser.get_config_data('mysql', 'database'), charset="utf8")
     # 使用cursor()方法获取操作游标
     cursor = db.cursor()
-    # 使用execute方法执行SQL语句
-    cursor.execute("SELECT VERSION()")
-    # 使用 fetchone() 方法获取一条数据
-    data = cursor.fetchone()
-    print "Database version : %s " % data
-    # 关闭数据库连接
-    db.close()
+    return cursor
 
 
-connet_mysql()
+def get_count(cursor, col_name, table_name):
+    cursor.execute("select count(" + col_name + ") from " + table_name)
+    return cursor.fetchone()
+
+
+def get_data(cursor, col_name, table_name):
+    cursor.execute("select " + col_name + " from " + table_name)
+    return cursor.fetchall()
