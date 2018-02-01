@@ -42,17 +42,22 @@ class Webtest(unittest.TestCase):
             region.add_region(driver,u'江宁')
             #检测新增区域
             self.assertTrue(confirm.is_element_text_attribute_exist(driver,'td','江宁',r'/../td','class','bs-checkbox '))
+            self.assertTrue(confirm.is_in_database(u'江宁', 'name', 'region'))
             logging.info("Finish adding region")
             time.sleep(2)
             #编辑区域
             region.edit_region(driver,u'江宁',u'小视')
             #检测编辑区域
             self.assertTrue(confirm.is_element_text_exist(driver, 'td', u"小视"))
+            self.assertFalse(confirm.is_element_text_exist(driver, 'td', u"江宁"))
+            self.assertTrue(confirm.is_in_database(u'小视','name', 'region'))
+            self.assertFalse(confirm.is_in_database(u'江宁', 'name', 'region'))
             logging.info("Finish editing region")
             time.sleep(2)
             #删除区域
             region.delete_region(driver,u'小视')
             self.assertFalse(confirm.is_element_text_exist(driver, 'td', u"小视"))
+            self.assertFalse(confirm.is_in_database(u'小视', 'name', 'region'))
             logging.info("Finish deleting region")
             time.sleep(2)
             logging.info('Test 002 successfully')

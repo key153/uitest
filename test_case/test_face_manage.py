@@ -41,19 +41,23 @@ class Webtest(unittest.TestCase):
             # 新增一个人脸库
             face_data_manage.add_face_lib(driver, 'testtest')
             # 检测新增人脸库
-            logging.info(confirm.is_element_text_exist(driver, 'td', "testtest"))
             self.assertTrue(confirm.is_element_text_exist(driver, 'td', "testtest"))
+            self.assertTrue(confirm.is_in_database('testtest', 'faceset_name', 'face_set'))
             logging.info("Finish adding face lib")
             time.sleep(2)
             # 编辑人脸库
             face_data_manage.edit_face_lib(driver, 'testtest', '11')
             # 检测编辑人脸库
+            self.assertFalse(confirm.is_element_text_exist(driver, 'td', "testtest"))
             self.assertTrue(confirm.is_element_text_exist(driver, 'td', "testtest11"))
+            self.assertFalse(confirm.is_in_database('testtest', 'faceset_name', 'face_set'))
+            self.assertTrue(confirm.is_in_database('testtest11', 'faceset_name', 'face_set'))
             logging.info("Finish editing face lib")
             time.sleep(2)
             # 删除人脸库
             face_data_manage.delete_face_lib(driver, 'testtest11')
             self.assertFalse(confirm.is_element_text_exist(driver, 'td', "testtest11"))
+            self.assertFalse(confirm.is_in_database('testtest11', 'faceset_name', 'face_set'))
             logging.info("Finish deleting face lib")
             time.sleep(2)
             logging.info('Test 001 successfully')

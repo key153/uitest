@@ -14,10 +14,12 @@ def connet_mysql():
 
 
 def get_count(cursor, col_name, table_name):
+    # 获取数据库某表的记录条数
     cursor.execute("select count(" + col_name + ") from " + table_name)
     return cursor.fetchone()
 
 
 def get_data(cursor, col_name, table_name):
+    # 获取数据库某表的记录全部数据
     cursor.execute("select " + col_name + " from " + table_name)
     return cursor.fetchall()
