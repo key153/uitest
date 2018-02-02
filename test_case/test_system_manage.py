@@ -60,7 +60,7 @@ class Webtest(unittest.TestCase):
             self.assertFalse(confirm.is_in_database(u'小视', 'name', 'region'))
             logging.info("Finish deleting region")
             time.sleep(2)
-            logging.info('Test 002 successfully')
+            logging.info('Test region successfully')
 
         except Exception, e:
             exceptions.deal_case_error(driver, 'region', e)

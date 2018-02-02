@@ -60,7 +60,7 @@ class Webtest(unittest.TestCase):
             self.assertFalse(confirm.is_in_database('testtest11', 'faceset_name', 'face_set'))
             logging.info("Finish deleting face lib")
             time.sleep(2)
-            logging.info('Test 001 successfully')
+            logging.info('Test facelab successfully')
 
         except Exception, e:
             xceptions.deal_case_error(driver, 'facelab', e)
