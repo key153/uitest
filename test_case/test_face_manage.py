@@ -34,7 +34,7 @@ class Webtest(unittest.TestCase):
 
 
     def test_facelab(self):
-        # 新增人脸库
+        # 人脸库的增删改
         driver = self.driver
         logging.info('Start test: facelab')
         try:
@@ -45,6 +45,9 @@ class Webtest(unittest.TestCase):
             self.assertTrue(confirm.is_in_database('testtest', 'faceset_name', 'face_set'))
             logging.info("Finish adding face lib")
             time.sleep(2)
+            # 刷新人脸库
+            face_data_manage.refresh_face_lib(driver, u"正在努力地加载数据中，请稍候……")
+            self.assertTrue(confirm.is_element_text_exist(driver, 'td', "testtest"))
             # 编辑人脸库
             face_data_manage.edit_face_lib(driver, 'testtest', '11')
             # 检测编辑人脸库
