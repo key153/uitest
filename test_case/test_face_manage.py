@@ -46,7 +46,7 @@ class Webtest(unittest.TestCase):
             logging.info("Finish adding face lib")
             time.sleep(2)
             # 刷新人脸库
-            face_data_manage.refresh_face_lib(driver, u"正在努力地加载数据中，请稍候……")
+            face_data_manage.refresh_face_lib(driver, "testtest")
             self.assertTrue(confirm.is_element_text_exist(driver, 'td', "testtest"))
             # 编辑人脸库
             face_data_manage.edit_face_lib(driver, 'testtest', '11')

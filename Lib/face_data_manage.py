@@ -46,10 +46,5 @@ def delete_face_lib(driver,name):
 def refresh_face_lib(driver, name):
     # 刷新人脸库
     driver.find_element_by_xpath("//i[@class='fa fa-refresh bigger-110 blue']").click()
-    logging.info('11111111111111')
-    logging.info(driver.find_element_by_xpath("//*[@id='table']/thead/tr/th[2]/div[1]").text)
-    WebDriverWait(driver, 20).until(EC.text_to_be_present_in_element((By.XPATH, "//*[@id='table']/thead/tr/th[2]/div[1]"), 'ID'))
-    # logging.info(WebDriverWait(driver, 20).until(EC.title_is(u"视频监控平台")))
-    # WebDriverWait(driver, 20).until(EC.text_to_be_present_in_element((By.XPATH, "//*[@id='content']/div[1]/h1"), u'人脸库列表'))
-    logging.info('222222222222222')
-    # WebDriverWait(driver, 20).until_not(EC.text_to_be_present_in_element((By.XPATH, "//*[@id='content']/div[4]/div[1]/div[2]/div[2]/div"), name))
+    # 显示等待
+    WebDriverWait(driver, 10).until(lambda x: x.find_element_by_xpath("//td[text()='%s']"%name))

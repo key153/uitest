@@ -1,1 +1,2 @@
 import test_system_manage
+import test_face_manage
