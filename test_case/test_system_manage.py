@@ -62,7 +62,7 @@ class Webtest(unittest.TestCase):
             time.sleep(2)
             logging.info('Test region successfully')
 
-        except Exception, e:
+        except Exception as e:
             exceptions.deal_case_error(driver, 'region', e)
 
 

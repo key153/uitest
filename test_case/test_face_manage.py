@@ -6,7 +6,6 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re, sys, os
-import HTMLTestRunner
 import logging
 
 
@@ -65,8 +64,8 @@ class Webtest(unittest.TestCase):
             time.sleep(2)
             logging.info('Test facelab successfully')
 
-        except Exception, e:
-            xceptions.deal_case_error(driver, 'facelab', e)
+        except Exception as e:
+            exceptions.deal_case_error(driver, 'facelab', e)
 
 
     @classmethod
